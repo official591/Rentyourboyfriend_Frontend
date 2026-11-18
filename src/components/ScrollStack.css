@@ -1,0 +1,40 @@
+.scroll-stack-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-inner {
+  padding: 2rem 0.5rem 6rem;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .scroll-stack-inner {
+    padding: 3rem 1rem 8rem;
+  }
+}
+
+.scroll-stack-item-container {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-card {
+  position: sticky;
+  will-change: transform;
+  border-radius: 28px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-stack-card:hover {
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-stack-end {
+  width: 100%;
+}

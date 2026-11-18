@@ -1,26 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────
+   COMPANION Gen Z Design System — Tailwind v4 CSS-first config
+   ────────────────────────────────────────────────────── */
+
+@theme inline {
+  /* Gen Z Vibrant Palette */
+  --color-cream: #FFF4DF;
+  --color-coral: #FF5C5C;
+  --color-cobalt: #3155FF;
+  --color-lime: #C7F35B;
+  --color-tangerine: #FF9D42;
+  --color-lavender: #B8A7FF;
+  --color-hotpink: #FF5FA2;
+  --color-plum: #30203D;
+  --color-dark: #171717;
+  --color-pure-white: #FFFFFF;
+
+  /* Legacy alias mappings for components */
+  --color-stone: #FFF4DF;
+  --color-parchment: #FFF4DF;
+  --color-charcoal: #171717;
+  --color-brass: #FF5C5C;
+  --color-olive: #30203D;
+  --color-wine: #3155FF;
+  --color-clay: #B8A7FF;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
+  --background: #FFF4DF;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ──── Base ──── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  overflow-x: clip;
+}
+
+/* ──── Lenis Smooth Scroll ──── */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ──── Custom Funky Gen Z Scrollbar ──── */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF4DF;
+  border-left: 2px solid #171717;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF5C5C;
+  border-radius: 9999px;
+  border: 2px solid #171717;
+  box-shadow: 2px 2px 0px #171717;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C7F35B;
+  box-shadow: 1px 1px 0px #171717;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FF5C5C #FFF4DF;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* ──── Typography Classes ──── */
+
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.font-editorial {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.tag-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sticker {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  border: 2px solid #171717;
+  box-shadow: 2px 2px 0px #171717;
+}
+
+/* ──── Marquee Animation ──── */
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ──── Custom Selection ──── */
+
+::selection {
+  background-color: #C7F35B;
+  color: #171717;
 }
